@@ -8,12 +8,14 @@ const char* password = "AGS@385hc";
 WebServer server(80);
 
 void setup() {
+  Serial.begin(115200);
   pinMode(PINO_STATUS, OUTPUT);
   digitalWrite(PINO_STATUS, LOW);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
   }
+  Serial.println(WiFi.localIP());
 
   for(int i = 0; i < 5; i++) {
     digitalWrite(PINO_STATUS, HIGH);
