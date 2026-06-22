@@ -9,6 +9,7 @@ WebServer server(80);
 
 void setup() {
   Serial.begin(115200);
+    delay(3000);
   pinMode(PINO_STATUS, OUTPUT);
   digitalWrite(PINO_STATUS, LOW);
   WiFi.begin(ssid, password);
