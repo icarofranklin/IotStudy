@@ -16,8 +16,8 @@ void setup(){
 }
 
 void loop(){
-  for (int i = 1; i < 5; i++){
-    Serial1.print("Número: ");
+  for (int i = 1; i <= 5; i++){
+    Serial1.print("Numero: ");
     Serial1.println(i);
 
     Serial.print("Enviando pro RS485: ");
