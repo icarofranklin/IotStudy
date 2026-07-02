@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-#define RX_PIN 20
-#define TX_PIN 21
+#define RX_PIN 44
+#define TX_PIN 43
 #define RS485_EN_PIN 8
 
 void setup(){
