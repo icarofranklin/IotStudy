@@ -1,11 +1,11 @@
 #include <Arduino.h>
 
-#define RX_PIN 44
-#define TX_PIN 43
+#define RXD 20
+#define TXD 21
 
 void setup(){
   Serial.begin(115200);
-  Serial1.begin (115200, SERIAL_8N1, RX_PIN, TX_PIN);
+  Serial1.begin (115200, SERIAL_8N1, RXD, TXD);
 
   delay(1000);
   Serial.println("Iniciando envio TTL puro para o PC2...");
