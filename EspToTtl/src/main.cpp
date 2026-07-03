@@ -3,9 +3,14 @@
 #define RX_PIN 1
 #define TX_PIN 2
 
+#define RS485_CONTROL_PIN 13
+
 void setup(){
   Serial.begin(115200);
   Serial1.begin (115200, SERIAL_8N1, RX_PIN, TX_PIN);
+
+  pinMode(RS485_CONTROL_PIN, OUTPUT);
+  digitalWrite(RS485_CONTROL_PIN, LOW);
 
   delay(1000);
   Serial.println("Iniciando envio TTL puro para o PC2...");
@@ -13,8 +18,13 @@ void setup(){
 
 void loop(){
   for (int i = 1; i <= 5; i++){
+    digitalWrite(RS485_CONTROL_PIN, HIGH);
+    delay(1);
+
     Serial1.print("Numero: ");
     Serial1.println(i);
+
+    Serial1.flush();
 
     Serial.print("Enviando pro PC2: ");
     Serial.println(i);
