@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-#define RX_PIN 20 
-#define TX_PIN 21
+#define RX_PIN 1
+#define TX_PIN 2
 
 void setup(){
   Serial.begin(115200);
