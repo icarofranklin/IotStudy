@@ -13,19 +13,19 @@ void setup(){
   digitalWrite(RS485_CONTROL_PIN, LOW);
 
   delay(1000);
-  Serial.println("Iniciando envio TTL puro para o PC2...");
+  Serial.println("Iniciando envio TTL puro para o PC2 (vers 1.0)...");
 }
 
 void loop(){
-  for (int i = 1; i <= 5; i++){
+  for (int i = 0; i < 9; i++){
     digitalWrite(RS485_CONTROL_PIN, HIGH);
-    delay(1);
+    delay(5);
 
-    Serial1.print("Numero: ");
-    Serial1.println(i);
+    //Serial1.print("");
+    Serial1.printf("%c", i);
 
     Serial1.flush();
-
+    delay(5);
     digitalWrite(RS485_CONTROL_PIN, LOW);
     
     Serial.print("Enviando pro PC2: ");
