@@ -6,7 +6,7 @@
 void setup(){
   Serial.begin(115200);
 
-  Serial1.begin(9600, SERIAL_8N1, RX_PIN, TX_PIN);
+  Serial1.begin(19200, SERIAL_8N1, RX_PIN, TX_PIN);
 
   delay(1000);
   Serial.println("Iniciando envio TTL puro (9600 bps) para o PC2...");
