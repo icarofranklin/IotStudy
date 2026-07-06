@@ -1,8 +1,10 @@
 #include <Arduino.h>
+#include <esp_task_wdt.h>
 
 #define RX_PIN 1
 #define TX_PIN 2
-
+int i = 0;
+char buffer [4];
 #define RS485_CONTROL_PIN 13
 
 void setup(){
@@ -13,21 +15,18 @@ void setup(){
   digitalWrite(RS485_CONTROL_PIN, LOW);
 
   delay(1000);
-  Serial.println("Iniciando envio TTL puro para o PC2 (vers 2.0 ITOA)...");
+  Serial.println("Iniciando envio TTL puro para o PC2 (vers 3.0 ITOA)...");
 }
 
 void loop(){
-
-  char buffer [3];
-
-  for (int i = 0; i < 9; i++){
 
     itoa(i, buffer, 10);
 
     digitalWrite(RS485_CONTROL_PIN, HIGH);
     delay(5);
 
-    Serial1.print(buffer);
+    Serial1.println(buffer);
+    delay(5);
 
     Serial1.flush();
     delay(5);
@@ -37,8 +36,12 @@ void loop(){
     Serial.println(i);
 
     delay(1000);
-  }
-
-  Serial.println("--- Fim do ciclo. Reiniciando... ---");
-  delay(1000);
+    i++;
+    if (i>5) {
+      i = 0;
+      yield();
+    }
+    esp_task_wdt_reset();
+  //Serial.println("--- Fim do ciclo. Reiniciando... ---");
+  delay(10);
 }
