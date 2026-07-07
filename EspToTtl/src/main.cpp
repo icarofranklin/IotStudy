@@ -4,7 +4,7 @@
 #define RX_PIN 1
 #define TX_PIN 2
 int i = 0;
-char buffer [4];
+char buffer [1];
 #define RS485_CONTROL_PIN 13
 
 void setup(){
@@ -15,7 +15,7 @@ void setup(){
   digitalWrite(RS485_CONTROL_PIN, LOW);
 
   delay(1000);
-  Serial.println("Iniciando envio TTL puro para o PC2 (vers 3.0 ITOA)...");
+  Serial.println("Iniciando envio TTL puro para o PC2 (vers 4.0 ITOA)...");
 }
 
 void loop(){
