@@ -9,7 +9,7 @@ char buffer [1];
 
 void setup(){
   Serial.begin(115200);
-  Serial1.begin (9600, SERIAL_8N1, RX_PIN, TX_PIN);
+  Serial1.begin (115200, SERIAL_8N1, RX_PIN, TX_PIN);
 
   pinMode(RS485_CONTROL_PIN, OUTPUT);
   digitalWrite(RS485_CONTROL_PIN, LOW);
