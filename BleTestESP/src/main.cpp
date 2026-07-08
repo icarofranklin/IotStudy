@@ -1,18 +1,45 @@
 #include <Arduino.h>
+#include <BLEDevice.h>
+#include <BLEUtils.h>
+#include <BLEServer.h>
 
-// put function declarations here:
-int myFunction(int, int);
+BLEAdvertising* pAdvertising = nullptr;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  Serial.println("Inicializando Testes BLE...");
+
+  BLEDevice::init("Dispositivos de Teste Educativo");
+
+  BLEServer* pServer = BLEDevice::createServer();
+
+  pAdvertising = BLEDevice::getAdvertising();
+
+  pAdvertising->setMinInterval(0x20);
+  pAdvertising->setMaxInterval(0x20);
+
+  BLEAdvertisementData oAdvertisementData;
+  oAdvertisementData.setFlags(ESP_BLE_ADV_FLAG_GEN_DISC | ESP_BLE_ADV_FLAG_BREDR_NOT_SPT);
+
+  oAdvertisementData.setName("TESTE_SATURACAO_CANAL_BLE_LAB");
+
+  pAdvertising->setAdvertisementData(oAdvertisementData);
+
+  Serial.println("[+] Parametros carregados. Iniciando saturacao dos canais 37, 38 e 39...");
+
+  pAdvertising->start();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  // Como o hardware do ESP32 gerencia o envio dos pacotes de anúncio em segundo plano
+  // através do controlador de rádio, o loop principal pode ficar livre.
+  // Para garantir que o chip não reinicie por causa do Watchdog, damos um pequeno yield.
+  
+  static unsigned long tempoAnterior = 0;
+  if (millis() - tempoAnterior > 5000) {
+    Serial.println("[!] Transmitindo pacotes BLE continuamente no espectro local...");
+    tempoAnterior = millis();
+  }
+  
+  delay(10); 
 }
