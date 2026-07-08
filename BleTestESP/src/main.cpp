@@ -30,11 +30,7 @@ void setup() {
   pAdvertising->start();
 }
 
-void loop() {
-  // Como o hardware do ESP32 gerencia o envio dos pacotes de anúncio em segundo plano
-  // através do controlador de rádio, o loop principal pode ficar livre.
-  // Para garantir que o chip não reinicie por causa do Watchdog, damos um pequeno yield.
-  
+void loop() {  
   static unsigned long tempoAnterior = 0;
   if (millis() - tempoAnterior > 5000) {
     Serial.println("[!] Transmitindo pacotes BLE continuamente no espectro local...");
