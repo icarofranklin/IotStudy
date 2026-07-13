@@ -1,15 +1,17 @@
 #include <Arduino.h>
 #include <esp_task_wdt.h>
 
-#define RX_PIN 1
-#define TX_PIN 2
-int i = 0;
-char buffer [1];
+#define RX_PIN RX
+#define TX_PIN TX
+
 #define RS485_CONTROL_PIN 13
+
+int i = 0;
+char buffer [4];
 
 void setup(){
   Serial.begin(115200);
-  Serial1.begin (115200, SERIAL_8N1, RX_PIN, TX_PIN);
+  Serial1.begin (9600, SERIAL_8N1, RX_PIN, TX_PIN);
 
   pinMode(RS485_CONTROL_PIN, OUTPUT);
   digitalWrite(RS485_CONTROL_PIN, LOW);
@@ -36,8 +38,9 @@ void loop(){
     Serial.println(i);
 
     delay(1000);
+
     i++;
-    if (i>5) {
+    if (i > 5) {
       i = 0;
       yield();
     }
