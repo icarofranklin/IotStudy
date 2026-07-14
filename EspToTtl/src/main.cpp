@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <esp_task_wdt.h>
 
-#define RX_PIN RX
-#define TX_PIN TX
+#define RX_PIN 1
+#define TX_PIN 2
 
 #define RS485_CONTROL_PIN 13
 
