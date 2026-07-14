@@ -46,7 +46,4 @@ void loop(){
     }
     
     esp_task_wdt_reset();
-
-  Serial.println("--- Fim do ciclo. Reiniciando... ---");
-  delay(10);
 }
