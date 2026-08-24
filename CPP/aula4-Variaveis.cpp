@@ -22,6 +22,8 @@ int main(){
     cin >> decimal; 
     cout << "Dinheiro em conta: ";
     cin >> decimal2; 
+    cout << "Vivo: ";
+    cin >> vivo; 
 
     // cout << nome << "\n";
     // cout << vidas << "\n";
