@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std; 
 
-#define pi 3.1415
+#define pi 3.1415 // escopo global
 #define nome cout << "Icaro Ferreira Franklin\n\n"
 
 int main(){
