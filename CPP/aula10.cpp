@@ -1,10 +1,15 @@
 #include <iostream>
+#include <cstdlib>
+
 using namespace std;
 int main(){
 
     int n1,n2,res;
     char opc;
+    
     inicio:
+
+    system("clear");
 
     cout << "Digite o valor da nota 1: ";
     cin >> n1;
