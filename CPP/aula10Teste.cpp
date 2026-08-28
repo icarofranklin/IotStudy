@@ -8,7 +8,7 @@ int main(){
     cout << "Digite o valor da nota 1: ";
     cin >> n1;
 
-    while (n1>10){   
+    while (n1 > 10 || n1 < 0){   
         cout << "Nota inválida! A nota máxima é 10.\n\n Digite a nota novamente: ";
         cin >> n1;
     }
@@ -16,7 +16,7 @@ int main(){
     cout << "Digite o valor da nota 2: ";
     cin >> n2;
 
-    while (n2>10){   
+    while (n2 > 10 || n2 < 0 ){   
         cout << "Nota inválida! A nota máxima é 10.\n\n Digite a nota novamente: ";
         cin >> n2;
     }
