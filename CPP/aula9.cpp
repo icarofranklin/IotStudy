@@ -1,17 +1,15 @@
 #include <iostream>
 using namespace std;
 
-int main(){
-    // trabalhando com testes lógicos if / else
-    // int num1=10;
-    // int num2=20;
-    int sol=1;
-    //char opc='s';
+int main (){
 
-    if(sol){
-        cout<< "Vou ao clube\n";
-    }else{
-        cout<< "Vou ao cinema\n";
+    int num=10;
+    char opc='s';
+
+    if(){ //SE = for verdadeira
+        
+    }else(){ //SE NÃO ou Caso contrário = for falso
+        
     }
 
     return 0;
