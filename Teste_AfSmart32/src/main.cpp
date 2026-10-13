@@ -1,5 +1,6 @@
 #include <Arduino.h>
-#include <Wire.h>
+#include "Wire.h"
+
 /*
 Nesta placa, o PCF8574 responde em 0x27.
 
@@ -12,18 +13,21 @@ void setup() {
     Serial.begin(115200);
     delay(500);
     Wire.begin(21, 22);
-    Serial.println("Teste dos Reles da AF Smart ESP32 Rev2.1");
+    Serial.println("Teste 1 - polaridade dos reles");
 }
 void loop() {
-    for (byte endereco = 1; endereco < 127; endereco++) {
-    Wire.beginTransmission(endereco);
-    byte resposta = Wire.endTransmission();
+    Wire.beginTransmission(0x27);
+    Wire.write(0x00);
+    Wire.endTransmission();
+    Serial.println("Escrevi 0x00");
+    delay(2000);
 
-        if (resposta == 0) {
-            Serial.print("Encontrei dispositivo em 0x");
-            Serial.println(endereco, HEX);
-        }
-    }
-    Serial.println("Scan completo.");
+    Wire.beginTransmission(0x27);
+    Wire.write(0xFF);
+    Wire.endTransmission();
+    Serial.println("Escrevi 0xFF");
+    delay(2000);
+
+    Serial.println("---Ciclo---");
     delay(5000);
 }
