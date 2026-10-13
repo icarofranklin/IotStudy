@@ -19,15 +19,15 @@ void loop() {
     Wire.beginTransmission(0x27);
     Wire.write(0x00);
     Wire.endTransmission();
-    Serial.println("Escrevi 0x00");
+    Serial.println("Ligado 0x00");
     delay(2000);
 
     Wire.beginTransmission(0x27);
     Wire.write(0xFF);
     Wire.endTransmission();
-    Serial.println("Escrevi 0xFF");
+    Serial.println("Desligado 0xFF");
     delay(2000);
 
-    Serial.println("---Ciclo---");
-    delay(5000);
+    Serial.println("---Fim do Ciclo---");
+    delay(10000);
 }
