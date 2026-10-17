@@ -13,7 +13,7 @@ int main(){
     16 a 19
     */
 
-    num = 12;
+    num = 7;
 
     if((num >= 3 && num <= 6) || (num > 9 && num < 15) || (num > 15 && num < 20)){
         cout << "\n\nValor aceito\n";
