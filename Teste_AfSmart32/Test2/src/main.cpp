@@ -3,6 +3,18 @@
 
 #define PCF_ADDR 0x27
 
+/*
+Com isso, comprovei que:
+
+i=0 -> 0xEF (P4=LOW) -> RL1 liga.
+
+i=1 -> 0xDF (P5=LOW) -> RL2 liga.
+
+i=2 -> 0xBF (P6=LOW) -> RL3 liga.
+
+i=3 -> 0x7F (P7=LOW) -> RL4 liga.
+*/
+
 void escreverPCF(byte valor) {
   Wire.beginTransmission(PCF_ADDR);
   Wire.write(valor);
@@ -17,9 +29,9 @@ void setup () {
 }
 
 void loop() {
-  byte testes[] = {0xEF, 0xDF, 0xBF, 0x7F};
+  byte testes[] = {0xEF & 0xBF, 0xDF & 0x7F};
 
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 2; i++) {
     escreverPCF(testes[i]);
     Serial.print("Testando byte: 0x");
     Serial.println(testes[i], HEX);
