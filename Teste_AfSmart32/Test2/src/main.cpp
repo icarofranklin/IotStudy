@@ -1,18 +1,34 @@
 #include <Arduino.h>
+#include <Wire.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#define PCF_ADDR 0x27
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+void escreverPCF(byte valor) {
+  Wire.beginTransmission(PCF_ADDR);
+  Wire.write(valor);
+  Wire.endTransmission();
+}
+
+void setup () {
+  Serial.begin(115200);
+  delay(500);
+  Wire.begin(21, 22);
+  Serial.println("Teste 2 - Mapeamento dos Reles");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  byte testes[] = {0xEF, 0xDF, 0xBF, 0x7F};
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  for (int i = 0; i < 4; i++) {
+    escreverPCF(testes[i]);
+    Serial.print("Testando byte: 0x");
+    Serial.println(testes[i], HEX);
+    delay(5000);
+
+    escreverPCF(0xFF);
+    Serial.println("Todos HIGH");
+    delay(1000);
+  }
+
+  Serial.println("--- fim do ciclo ---");
 }
