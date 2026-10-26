@@ -15,6 +15,12 @@ void setup() {
     Wire.begin(21, 22);
     Serial.println("Teste 1 - polaridade dos reles");
 }
+
+void escrevePCF(byte valor) {
+    Wire.beginTransmission(0x27);
+    Wire.write(valor);
+    Wire.endTransmission();
+}
 void loop() {
     Wire.beginTransmission(0x27);
     Wire.write(0x00);
