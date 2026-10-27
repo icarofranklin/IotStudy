@@ -1,18 +1,39 @@
 #include <Arduino.h>
+#include <WiFi.h>
+#include <WiFiUdp.h>
+#include <NTPClient.h>
 
-// put function declarations here:
-int myFunction(int, int);
+
+const char* ssid = "";
+const char* password = "";
+
+WiFiUDP ntpUDP;
+const long utcOffsetInSeconds = -18000; 
+
+NTPClient timeClient(ntpUDP, "pool.ntp.org", utcOffsetInSeconds);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println("Iniciando teste de hora NTP...");
+
+  Serial.printf("Conectando a %s\n", ssid);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWi-Fi conectado!");
+  Serial.print("Endereço IP: ");
+  Serial.println(WiFi.localIP());
+
+  timeClient.begin();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  timeClient.update();
+  Serial.print("Hora atual: ");
+  Serial.println(timeClient.getFormattedTime());
+  delay(1000);
 }
