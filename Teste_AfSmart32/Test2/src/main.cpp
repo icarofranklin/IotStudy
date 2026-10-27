@@ -29,9 +29,9 @@ void setup () {
 }
 
 void loop() {
-  byte testes[] = {0xEF & 0xBF, 0xDF & 0x7F};
+  byte testes[] = {0xEF, 0xDF, 0xBF, 0x7F};
 
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < 4; i++) {
     escreverPCF(testes[i]);
     Serial.print("Testando byte: 0x");
     Serial.println(testes[i], HEX);
