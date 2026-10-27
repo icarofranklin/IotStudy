@@ -17,14 +17,11 @@ void setup() {
     Serial.println(">>> ERRO: O modulo nao respondeu.");
     while (1);
   }
-
-  // Vamos configurar algumas coisas para ver se o chip obedece
-  radio.setPALevel(RF24_PA_HIGH);    // Potência alta
-  radio.setDataRate(RF24_1MBPS);     // Velocidade de 1 Mbps
-  radio.setChannel(115);             // Canal 115 (fora da faixa do Wi-Fi)
+  radio.setPALevel(RF24_PA_HIGH);  
+  radio.setDataRate(RF24_1MBPS);    
+  radio.setChannel(115);            
   radio.openWritingPipe(0x1234567890LL);
   
-  // Imprime um relatório bonito e legível de todos os registradores
   Serial.println("--- RELATORIO DO CHIP ---");
   radio.printPrettyDetails();
   Serial.println("-------------------------");
@@ -32,5 +29,5 @@ void setup() {
 }
 
 void loop() {
-  // Nada a fazer aqui
+
 }
