@@ -29,7 +29,7 @@ void setup () {
 }
 
 void loop() {
-  byte testes[] = {0xEF, 0xDF, 0xBF, 0x7F};
+  byte testes[] = {0xEF, 0xCF, 0x8F, 0x0F};
 
   for (int i = 0; i < 4; i++) {
     escreverPCF(testes[i]);
