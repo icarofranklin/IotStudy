@@ -35,10 +35,10 @@ void loop() {
     escreverPCF(testes[i]);
     Serial.print("Testando byte: 0x");
     Serial.println(testes[i], HEX);
-    delay(5000);
+    delay(1000);
 
     escreverPCF(0xFF);
-    Serial.println("Todos HIGH");
+    Serial.println("Todos LOW");
     delay(1000);
   }
 
